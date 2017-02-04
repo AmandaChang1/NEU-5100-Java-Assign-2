@@ -1,4 +1,7 @@
-
+/*
+score: 9.0/10.0
+Great Job! Just one corner case miss.
+*/
 /**
  * Created by Rose on 1/21/17.
  * Assignment for your lecture 2. Please finish all the questions under
@@ -46,7 +49,7 @@ public class Assignment2 {
      * If the salary is less than or equal to 8900, the Social Security Tax is 6.2% of the salary.
      * If the salary is more than 8900, the Social Security Tax is 6.2% of 106,800.
      */
-    public double socialSecurityTax(Employee employee) {
+    public double socialSecurityTax(Employee employee) {        //correct
         if (employee.salary <8900) {
         	System.out.println(employee.salary*0.062);
         	return employee.salary*0.062;
@@ -62,7 +65,7 @@ public class Assignment2 {
      * If the employee is under 35, rate is 3% of salary; if the employee is between 35 and 50(inclusive), rate is 4% of salary;
      * If the employee is between 50 and 60(exclusive), rate is 5% of salary; If the employee is above 60, rate is 6% of salary.
      */
-    public double insuranceCoverage(Employee employee) {
+    public double insuranceCoverage(Employee employee) {          //correct
         double x;
     	if (employee.age <35){
         	x= employee.salary*0.03; 
@@ -81,7 +84,7 @@ public class Assignment2 {
      * For example, Alice's salary is 1000, John's salary is 500, Jenny's salary is 1200, you should print:
      * John Alice Jenny
      */
-    public void sortSalary(Employee e1, Employee e2, Employee e3) {    	   	
+    public void sortSalary(Employee e1, Employee e2, Employee e3) {    	   	//correct
     	Employee n = e1;  
     	Employee sortEmployee[] ={e1,e2,e3};
     	for (Employee e: sortEmployee) {
@@ -126,7 +129,7 @@ public class Assignment2 {
      * Do not change the input of this method.
      * Try to add a new method in Employee class: public void raiseSalary(double byPercent)
      */
-    public void tripleSalary(Employee employee) {
+    public void tripleSalary(Employee employee) {                           //requirement is to use raiseSalary()method, but your way is also correct
     	employee.salary= employee.salary*3;
     	System.out.println(employee.salary);
     }
@@ -136,7 +139,7 @@ public class Assignment2 {
     /**
      * Write a method to determine whether a number is prime
      */
-    public boolean isPrime(int n) {
+    public boolean isPrime(int n) {                  //correct
     	if (n<=1){
     		return false;
     	}
@@ -156,7 +159,7 @@ public class Assignment2 {
      * result has only one digit. For example: Given n = 38, the process is
      * like: 3 + 8 = 11, 1 + 1 = 2. Since 2 has only one digit, return it.
      */
-    public int addDigits(int n) {
+    public int addDigits(int n) {                  //correct
     	n=Math.abs(n);
     	int sum=0;
     	 do {  
@@ -177,7 +180,7 @@ public class Assignment2 {
      * another prime factor 7. Note that 1 is typically treated as an ugly
      * number.
      */
-    public boolean isUgly(int n) {
+    public boolean isUgly(int n) {               //one mistake: if n is 0, the program cannot jump out the first while loop
         while (n%2==0){
         	n /= 2;
         	if (n==1) {
@@ -216,9 +219,18 @@ public class Assignment2 {
      */
     /*
      write your understanding here.
-     After swap, should also change the subject for .getName. 
+     After swap, should also change the subject for .getName.            
      Because the sentence "swap(a,b)" don't into the call function   
     */
+    /*
+     correct answer is:
+     after "Employee a = new Employee", the program declare a as the reference
+     variable assigned to the Employee object named Jenny. Also, b is the reference variable
+     assigned to the Employee object named John. When calling the method "swap", two reference
+     variables are passed as the arguments. Yet, the passed x and y are only the copies of a and b.
+     Swapping x and y will not affected the assignment of a and b. Therefore, a is still assigned to
+     Employee "Jenny" and b is still assigned to Employee "John".
+     */
     public static void main(String[] args) {
         Employee a = new Employee("Jenny", 20, Gender.FEMALE, 2000);
         Employee b = new Employee("John", 30, Gender.MALE, 2500);
